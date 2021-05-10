@@ -49,22 +49,20 @@ public class MySQLConnection {
 		
 		// Step2 using 2 parameter getConnection()
 		String env = System.getenv("ENVIRONMENT");
-		Properties pros = new Properties();
+		Properties properties = new Properties();
 		Connection connection2 = null;
 		//FileReader fr = new FileReader("G:\\CodingClown\\Rad\\src\\main\\resources\\application-dev.properties")
 		try(InputStream is = ClassLoader.getSystemResourceAsStream(String.format("%s%s%s", "application-", env,".properties"))){
-			pros.load(is);
+			properties.load(is);
 			try {
-				connection2 = DriverManager.getConnection(url, pros);
+				connection2 = DriverManager.getConnection(properties.getProperty("jdbc.mysql.url"), properties);
 			} catch (SQLException e1) {
-				// TODO Auto-generated catch block
 				e1.printStackTrace();
 			}
 			System.out.println("connection Extablished" + connection2);
 			try {
 				connection2.close();
 			} catch (SQLException e) {
-				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
 		} catch (FileNotFoundException fe) {
