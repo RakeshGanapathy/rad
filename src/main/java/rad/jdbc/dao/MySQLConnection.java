@@ -2,8 +2,8 @@
 package rad.jdbc.dao;
 
 import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
@@ -48,11 +48,12 @@ public class MySQLConnection {
 		}
 		
 		// Step2 using 2 parameter getConnection()
-
+		String env = System.getenv("ENVIRONMENT");
 		Properties pros = new Properties();
 		Connection connection2 = null;
-		try(FileReader fr = new FileReader("G:\\CodingClown\\Rad\\src\\main\\resources\\application-dev.properties")){
-			pros.load(fr);
+		//FileReader fr = new FileReader("G:\\CodingClown\\Rad\\src\\main\\resources\\application-dev.properties")
+		try(InputStream is = ClassLoader.getSystemResourceAsStream(String.format("%s%s%s", "application-", env,".properties"))){
+			pros.load(is);
 			try {
 				connection2 = DriverManager.getConnection(url, pros);
 			} catch (SQLException e1) {
