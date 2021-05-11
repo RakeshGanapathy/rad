@@ -1,5 +1,9 @@
 
 package rad.jdbc.dao;
+import static rad.classloading.properties.GlobalConstants.ENV;
+import static rad.classloading.properties.GlobalConstants.RESOURCE_PREFIX;
+import static rad.classloading.properties.GlobalConstants.RESOURCE_SUFFIX;
+import static rad.classloading.properties.GlobalConstants.URL;
 
 import java.io.FileNotFoundException;
 import java.io.IOException;
@@ -48,14 +52,14 @@ public class MySQLConnection {
 		}
 		
 		// Step2 using 2 parameter getConnection()
-		String env = System.getenv("ENVIRONMENT");
+		String env = System.getenv(ENV);
 		Properties properties = new Properties();
 		Connection connection2 = null;
 		//FileReader fr = new FileReader("G:\\CodingClown\\Rad\\src\\main\\resources\\application-dev.properties")
-		try(InputStream is = ClassLoader.getSystemResourceAsStream(String.format("%s%s%s", "application-", env,".properties"))){
+		try(InputStream is = ClassLoader.getSystemResourceAsStream(String.format("%s%s%s",RESOURCE_PREFIX,env,RESOURCE_SUFFIX))){
 			properties.load(is);
 			try {
-				connection2 = DriverManager.getConnection(properties.getProperty("jdbc.mysql.url"), properties);
+				connection2 = DriverManager.getConnection(properties.getProperty(URL), properties);
 			} catch (SQLException e1) {
 				e1.printStackTrace();
 			}
