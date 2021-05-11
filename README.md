@@ -1,6 +1,5 @@
 # MySQL queries
 
-public Statement createStatement(){}
 create table students(
 studid int primary key,
 studname varchar(10),
