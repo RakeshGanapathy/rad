@@ -52,7 +52,7 @@ example:
 	
 			
 
-			![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/Statements.PNG)
+![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/Statements.PNG)
 
 
 When you submit the SQL statement using Statement Object then SQL
