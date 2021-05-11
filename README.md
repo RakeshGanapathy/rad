@@ -61,10 +61,11 @@ statement will be compiled and executed every time.
 	
 	
 
-Total time = request time + compile time+execute time +response time 
-		   			= 5+5+5+5
-		   			= 20 ms 
-100 SQL Statements 	= 100*20  = 2000 ms
+Total time 	= request time + compile time+execute time +response time 
+		= 5+5+5+5
+		= 20 ms 
+100 SQL query 	= 100*20  
+total time 	= 2000 ms
 
 
 # MySQL queries
