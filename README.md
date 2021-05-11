@@ -50,7 +50,9 @@ example:
 	int y= statement.executeUpdate(Sql3);
 	ResultSet rs= statement.executeQuery(sql4);
 	
-![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/Statements.PNG)
+			
+
+			![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/Statements.PNG)
 
 
 When you submit the SQL statement using Statement Object then SQL
