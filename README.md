@@ -91,7 +91,8 @@ phone long);
 			public boolean execute()
 * using Single preparedstatement object you can submit only one sql statement
 
-![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/preparedstatements.PNG)
+
+![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/preparedstatments.PNG)
 
 * when we submit the sql statement using prepared statement object then sql statement will be __compiled__ only once i.e first time and 
 precompiled SQL statement will be executed every time.
