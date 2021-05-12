@@ -74,3 +74,46 @@ studid int primary key,
 studname varchar(10),
 studemail varchar(10),
 phone long);
+
+#  PreparedStatment 
+
+* Prepared statement is an interface available in java.sql.package
+* Prepared statement is extending Statement Interface
+	class PreparedStatement extends Statement{
+	.......
+	}
+* Subclass of PreparedStatement interface is provided by Driver vendor 
+* you can create a prepared statment object using the following method of Connection Interface
+	public PreparedStatement prepareStatement(sql);
+* you can call one of the following methods on prepared statement object to submit sql statments 
+			public int executeUpdate()
+			public ResultSet executeQuery()
+			public boolean execute()
+* using Single preparedstatement object you can submit only one sql statement
+
+* when we submit the sql statement using prepared statement object then sql statement will be __compiled__ only once i.e first time and 
+precompiled SQL statement will be executed every time.
+
+TotalTime = request time +compile time +execution time +response 
+
+	  = 5 + 5 + 5 + 5= 20 ms 
+	 
+First Time 		= 20ms
+
+2nd onwards		= 5ms +0ms+5ms +5ms
+
+			=15ms
+			
+100 sql statements 	= 20ms +99*15ms
+			= 1505ms
+
+* Prepared Statment gives you the place holder mechanism for providing the data dynamically to the sql statments. you need to use __?__ symbol for place holder 
+
+* To provide the value for placeholder, you need to invoke the setter method depending on the placeholder data type.
+
+				* public void setInt(int paramIndex, int val);
+				* public void setString(int paramIndex, String val);
+				* public void setLong(int paramIndex,long val);
+				* public void setDouble(int paramIndex, double val);
+				etc...
+				
