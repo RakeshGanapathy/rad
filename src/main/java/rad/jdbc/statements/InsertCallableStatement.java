@@ -7,7 +7,7 @@ import java.util.Scanner;
 
 import rad.jdbc.util.JDBCUtil;
 
-public class InsertDataUsingCallableStatement {
+public class InsertCallableStatement {
 
 	public static void main(String[] args) {
 		CallableStatement cs =null;

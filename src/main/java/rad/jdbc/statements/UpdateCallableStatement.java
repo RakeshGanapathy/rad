@@ -8,7 +8,7 @@ import java.util.Scanner;
 
 import rad.jdbc.util.JDBCUtil;
 
-public class updateCallUsingCallableStatement {
+public class UpdateCallableStatement {
 
 	public static void main(String[] args) {
 		CallableStatement cs =null;
