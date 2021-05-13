@@ -144,6 +144,8 @@ First Time 		= 20ms
 	cal.setInt(2,20);
 	cal.execute();
 	
+![alt text](https://github.com/RakeshGanapathy/rad/blob/master/Images/preparedstatments.PNG)
+	
 * when you submit the call to stored procedures using CallableStatement object thne pre compiled stored procedures will be executed directly 
 
 	4 sqlStatements = 5 + 0 + 4*5  + 5 m = 30 ms
