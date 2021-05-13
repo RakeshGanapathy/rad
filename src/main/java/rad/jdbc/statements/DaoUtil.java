@@ -1,4 +1,4 @@
-package rad.jdbc.util;
+package rad.jdbc.statements;
 
 import static rad.classloading.properties.GlobalConstants.ENV;
 import static rad.classloading.properties.GlobalConstants.RESOURCE_PREFIX;
