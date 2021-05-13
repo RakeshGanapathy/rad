@@ -119,4 +119,93 @@ First Time 		= 20ms
 				* public void setLong(int paramIndex,long val);
 				* public void setDouble(int paramIndex, double val);
 				etc...
+
+#  Callable Statement 
+
+* CallableStatement is an interface available in java.sql.package.
+* CallableStatement is extending PreparedStatement interface
+* subclass of CallableStatement interface is provided by Driver vendor.
+* you can create the Callable Statement object using the following methods of Connection interface 
+		
+		public CallableStatement prepareCall(sql)
+		public CallableStatement prepareCall(sql,int,int)
+		public CallableStatement prepareCall(sql,int,int,int)
+
+* you can call the following method on CallableStatement object to submit the SQL Statement to Database
+		
+		public boolean execute()
+		
+* using the single CallableStatement Object,you can submit call to only one procedure 
+	
+	eg: 
+	String sql = "callProc1(?,?)";
+	CallableStatement cal = con.prepareCall(sql);
+	cal.setInt(1,10);
+	cal.setInt(2,20);
+	cal.execute();
+	
+* when you submit the call to stored procedures using CallableStatement object thne pre compiled stored procedures will be executed directly 
+
+	4 sqlStatements = 5 + 0 + 4*5  + 5 m = 30 ms
+
+	4 SqlStatement *25 = 30*25 = 750ms 
+	
+* Callable statement gives you the place holder mechanism for providing the data dynamically to the procedure parameters , you need to invoke
+the setter meethods depending on the placeholder data type.
+
+				 public void setInt(int paramIndex, int val);
+				 public void setString(int paramIndex, String val);
+				 public void setLong(int paramIndex,long val);
+				 public void setDouble(int paramIndex, double val);
+				etc...
+
+you need to use the following method to specify the OUT parameter 
+	public void registerOutParameter(int parameterIndex,int sqlType)
+		* sql type is a constant from java.sql.Types class
+
+you can use getters
+				 public void getInt(int paramIndex, int val);
+				 public void getString(int paramIndex, String val);
+				 public void getLong(int paramIndex,long val);
+				 public void getDouble(int paramIndex, double val);
 				
+__Queries__
+
+create table students(
+studid int primary key,
+studname varchar(10),
+studemail varchar(10),
+phone long);
+
+
+delimiter $
+create procedure insertStudentInfo(id int , name varchar(20),
+mail varchar(20),phone long)
+begin
+insert into students values(id,name,mail,phone);
+end;
+$
+
+
+create table studentsfee(
+studid int primary key,
+studname varchar(10),
+fee float);
+
+
+insert into studentsfee values(7,'farooq',256.45);
+
+
+DROP PROCEDURE IF EXISTS updateInfo; 
+
+delimiter $
+create procedure updateInfo(id int , OUT name varchar(20),INOUT inc float)
+begin
+update studentsfee set fee=fee+inc where studid =id;
+select studname,fee into name,inc from studentsfee where studid=id;
+end;
+$
+
+
+
+
