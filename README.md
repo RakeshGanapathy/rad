@@ -293,3 +293,50 @@ you can use the next method to move the resultSet pointer in the forward directi
 Depending on the resultsset cursor movements you can divide the ResultSet into 2 types 
 1. Forward-only ResultSets
 2. Scrollable ResultSets
+
+# Forward-only ResultSets:
+
+* pointer can be moved in forward direciton only 
+* pointer can be moved only once
+* pointer can be moved in sequential order
+
+By Default , Resultset are forward only
+
+you can explicitely specify the resultset as forward only as follows 
+
+Statement st = con.createStatement(ResultSet.TYPE_FORWARD_ONLY,..);
+
+you can use following method on Forward only resultset
+public boolean next()
+public boolean isBeforeFirst()
+public boolean isFirst()
+public int getRow()
+public boolean isAfterLast()
+public boolean isLast()
+etc
+
+
+
+# Scrollable ResultSet
+
+* pointer can be moved in both forward and reverse direction 
+* pointer can be moved multiple times
+* pointer can be moved in random order 
+
+by default Resultset are not scrollable 
+you can explicitely specify the result set as scrollable 
+
+Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,...);
+
+PreparedStatement ps= con.prepareStatement("select * .. ,ResultSet.TYPE_SCROLL_SENSITIVE);
+
+public boolean next()
+public boolean isBeforeFirst()
+public boolean isFirst()
+public int getRow()
+public boolean isAfterLast()
+public boolean isLast()
+public boolean absolute(int)
+public boolean relative(int)
+public boolean previous()
+
