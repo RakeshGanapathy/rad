@@ -55,6 +55,7 @@ public class MySQLConnection {
 		String env = System.getenv(ENV);
 		Properties properties = new Properties();
 		Connection connection2 = null;
+		//absolute path
 		//FileReader fr = new FileReader("G:\\CodingClown\\Rad\\src\\main\\resources\\application-dev.properties")
 		try(InputStream is = ClassLoader.getSystemResourceAsStream(String.format("%s%s%s",RESOURCE_PREFIX,env,RESOURCE_SUFFIX))){
 			properties.load(is);
