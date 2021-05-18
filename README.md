@@ -210,4 +210,86 @@ $
 
 
 
+#### Batch
 
+When you submit multiple queries to database one by one then lot of time will be wasted for request and response 
+
+Using Statement or Prepared Statement when we try to execute 100 sql statements,
+you need to communicate with database 100 times , this increases the number of roundtrips between your application and database which damages the application 
+performance.
+
+Batch update allows you to submit Multiple SQL Statements to the Database at a time. 
+
+Using Batch Updates
+
+For 100 SQL statements = 5 + 100*5 + 5*100 + 5 = 1010ms
+
+#Using Batch Updates With Statement:
+
+1. you can submit multiple types and Multiple queries of SQL statments
+2. you can reduce the number of roundtrips between your application and database which damages the application performance.
+3. Batch update can use insert, update and delete statements only
+4. you cannot use select statement 
+5. use the following methods of statement interface to implement Batch Updates.
+	void addBatch(String Query)
+	int [] executeBatch()
+	void clearBatch()
+
+#Using Batch Updates With Prepared Statement:
+
+1. you can submit only single type of sql statment and Multiple SQL statments
+2. you can reduce the number of roundtrips between your application and database which damages the application performance.
+3. Batch update can use insert, update and delete statements only
+4. you cannot use select statement 
+5. use the following methods of statement interface to implement Batch Updates.
+	void addBatch()
+	int [] executeBatch()
+	void clearParameter()
+
+####Result Set
+
+* Resultset is an interface available in java.sql package 
+* Subclass of Result Set interface is provided by Driver Vendor.
+* ResultSet object contains the records returned by select statements 
+* ResultSet objects can be created by using the following methods.
+
+	ResultSet rs = st.executeQuery("select ..."); //Statement interface
+	ResultSet rs = pc.executeQuery(); //PreparedStatementInterface
+
+* When a Result set object is created then initially Resultset cursor points to before to the first record 
+you can use the next method to move the resultSet pointer in the forward direction.
+	
+	public boolean next(){
+	
+	Checks whether next record is available or not 
+	if next record is present , then moves the pointer to next record 
+	return true;
+	
+	if next record is not present , then moves the pointer to next position
+	return false 
+	
+	}
+
+* you can use the previous() method to move the result set pointer in the reverse direction 
+		
+			public boolean previous(){
+			//checks whether previous record is available or not.
+			if previous record is available then moves the pointer to previous record 
+			return true
+			
+			if previous record is not present then moves the pointer to previous position 
+			
+			return false
+
+	* When ResultSet pointer is pointing one record then you can access the data of various columns using getXX() method 
+				public int getInt(int columnIndex)
+				public int getInt(String columnName)
+				public String getString(int columnName)
+				public String getString(String columnName)
+				etc..
+				
+### Types of ResultSet 
+
+Depending on the resultsset cursor movements you can divide the ResultSet into 2 types 
+1. Forward-only ResultSets
+2. Scrollable ResultSets
