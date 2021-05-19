@@ -224,7 +224,7 @@ Using Batch Updates
 
 For 100 SQL statements = 5 + 100*5 + 5*100 + 5 = 1010ms
 
-#Using Batch Updates With Statement:
+# Using Batch Updates With Statement:
 
 1. you can submit multiple types and Multiple queries of SQL statments
 2. you can reduce the number of roundtrips between your application and database which damages the application performance.
@@ -235,7 +235,7 @@ For 100 SQL statements = 5 + 100*5 + 5*100 + 5 = 1010ms
 	int [] executeBatch()
 	void clearBatch()
 
-#Using Batch Updates With Prepared Statement:
+# Using Batch Updates With Prepared Statement:
 
 1. you can submit only single type of sql statment and Multiple SQL statments
 2. you can reduce the number of roundtrips between your application and database which damages the application performance.
@@ -246,7 +246,7 @@ For 100 SQL statements = 5 + 100*5 + 5*100 + 5 = 1010ms
 	int [] executeBatch()
 	void clearParameter()
 
-####Result Set
+##  Result Set
 
 * Resultset is an interface available in java.sql package 
 * Subclass of Result Set interface is provided by Driver Vendor.
@@ -341,7 +341,7 @@ public boolean relative(int)
 public boolean previous()
 
 
-Assignment :
+# Assignment :
 
 create table bookstore(bookid int primary key, bookname varchar(20), author varchar(20) , publication varchar(20),cost double, edition int);
 create table user_table(username varchar(20) unique, password varchar(20));
@@ -370,7 +370,7 @@ JDBC API (method related to jdbc )
 UserValidation
 BookResource 
 
-##Transaction
+## Transaction
 
 Transaction is the process of perfoming multiple database operations as one Atomic unit will all-nothing criteria.
 
@@ -387,7 +387,7 @@ I- Isolation
 D- Durability
 
 
-Types of Transaction
+## Types of Transaction
 
 1. Local Transaction 
 2. Distributed Transaction 
