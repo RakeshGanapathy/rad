@@ -210,7 +210,7 @@ $
 
 
 
-#### Batch
+## Batch
 
 When you submit multiple queries to database one by one then lot of time will be wasted for request and response 
 
@@ -404,7 +404,7 @@ Distributed
 
 __JDBC supports only Local Transactions and doesn't support Distributed Transaction__
 
-#JDBC Transaction Management :
+# JDBC Transaction Management :
 
 * When multiple transaction are running concurrently then you may get some transactional concurrency problems.
 		1. DirtyRead Problem
