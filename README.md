@@ -370,4 +370,60 @@ JDBC API (method related to jdbc )
 UserValidation
 BookResource 
 
+##Transaction
+
+Transaction is the process of perfoming multiple database operations as one Atomic unit will all-nothing criteria.
+
+When all the database operation in the unit are successful then the transaction is successful and should be committed
+
+When any one database operation in the unit is failed then transaction is failed and should be rolled back
+
+
+When you implements Transaction properly in your application , It gaurantees ACID properties.
+
+A- Atomicity
+C- Consistency
+I- Isolation
+D- Durability
+
+
+Types of Transaction
+
+1. Local Transaction 
+2. Distributed Transaction 
+
+Local Transaction : 
+	When a Single Database is participating in the Transactional operation then it is known as Local Transaction 
+	
+	eg: Tranfer the funds from one account to another account where two accounts are in same bank or same database 
+	
+Distributed
+	When two or more databases are participating in the Transactional operation then it is known as Distributed Transaction 
+	
+	eg: Transfer the funds from one account to another account where two accounts are in different banks or different databases
+
+__JDBC supports only Local Transactions and doesn't support Distributed Transaction__
+
+#JDBC Transaction Management :
+
+* When multiple transaction are running concurrently then you may get some transactional concurrency problems.
+		1. DirtyRead Problem
+		2. Repeatable Read Problem
+		3. Phantom Read problem 
+
+* you need to specify the transaction isolation levels to solve theses transactional concurrency problems
+* there are 4 Transactional isolation levels which are defined as Constants in Connnection Interface as follows:
+
+	* TRANSACTION_READ_UNCOMMITTED 1
+	* TRANSACTION_READ_COMMITTED   2 
+	* TRANSACTION_REPEATABLE_READ  4
+	* TRANSACTION_SERIALIZABLE     8
+
+ * use the following method to specify the required Transacational Isolation level 
+ 	con.setTransactionIsolation(2)
+	con.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+
+
+
+
 
