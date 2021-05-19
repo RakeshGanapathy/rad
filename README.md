@@ -340,3 +340,34 @@ public boolean absolute(int)
 public boolean relative(int)
 public boolean previous()
 
+
+Assignment :
+
+create table bookstore(bookid int primary key, bookname varchar(20), author varchar(20) , publication varchar(20),cost double, edition int);
+create table user_table(username varchar(20) unique, password varchar(20));
+
+only 3 retry 
+Login 
+input : username , password
+process valid user 
+
+options 
+
+1. Adding the Book
+2. Update the Book
+3. Delete the Book
+4. Accessing the book by bookid 
+5. Accessing the book by bookname 
+6. Accessing the book by Author 
+7. Accessing the book by Cost 
+8. Accessing all the books 
+9. Exit 
+
+Hints : 
+Book pojo
+BookService (methods)
+JDBC API (method related to jdbc )
+UserValidation
+BookResource 
+
+
