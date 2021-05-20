@@ -69,11 +69,23 @@ Total time 		= 2000 ms
 
 # MySQL queries
 
+show databases;
+
+use sys;
+
+show tables;
+
 create table students(
 studid int primary key,
 studname varchar(10),
 studemail varchar(10),
 phone long);
+
+insert into students values(4,'naveen','abc@gmail',93894738789);
+
+update students set studname='jsp' where studid =4;
+
+drop table students
 
 #  PreparedStatment 
 
@@ -171,7 +183,7 @@ you can use getters
 				 public void getLong(int paramIndex,long val);
 				 public void getDouble(int paramIndex, double val);
 				
-__Queries__
+## __SQL Queries__
 
 create table students(
 studid int primary key,
