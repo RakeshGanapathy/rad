@@ -434,8 +434,74 @@ __JDBC supports only Local Transactions and doesn't support Distributed Transact
  * use the following method to specify the required Transacational Isolation level 
  	con.setTransactionIsolation(2)
 	con.setTransactionIsolation(Connection.TRANSACTION_READ_COMMITTED);
+	
+
+# ConnectionPooling
+	JDBC support two way to manage the connections 
+	1. Driver Manager Connections
+	2. DataSource Connections
+	
+Driver Manager Connection :
+
+	* If you want to get the DriverManager Connnections then you need to write the following code.
+		Class.forName("jdbc:mysql://localhost:3306/mysql")
+	* when you use DriverManager Connection , you will get 2 problems
+	
+		1. With Driver Manager connection , you need to hardcode the Driver class , url , username and password in every program. when you want to change 
+		the database or user then you need to change all the programs which gives the maintainance problems.(We solved this using JDBCUtil)
+	
+		2. When you call getConnection(url,un,pw) method on the DriverManager then new Connection will be created and returned. when you call close() on the 
+		connection which is taken from DriverManager then that Connection will be closed permanently.
+		Creating and Destroying connections everytime for every user is expensive and may damage your application performance.
+		
+	* you can solve these problems with DataSource Connections
+
+DataSourceConnections :
+	
+	* DataSource connections are based on Connection Pooling Technique
+	* Connection Pool is a special area which is contianing a set of reusable database connections i.e multiple database connection will be created and 
+	will be placed in pool 
+	* Whenever you want to use the connection 
+		1. you can just pick a connection from the pool
+		2. use the connection for database operation 
+		3. return the connection to the pool 
+	* if you want to use Datasource Connections, then you have to use some web/Application server 
 
 
+# Working With Dates
+
+Query :
+
+create table datetable (id int , doj date);
+
+
+# Working with files
+
+When you want to store the files in database then do the following 
+	* Define the column data type as BLOB(oracle)/LONGBLOB (MySql)
+	* create the FileInputStream by representing the file and its path.
+	* Invoke the following method with Prepared Statements 
+		ps.setBinaryStream(index,fs)
+
+When you want to read the files from database then do the following 
+	* Invoke the following method with result set 
+		InputStream is = rs.getBinaryStream(1);
+	* create the FileOutputStream by representing the file and its path 
+	* read the data from inputstream and write to the FileOutputStream
+	
+Note: it is not the good pratice to store large files and Images in the database. It may damage the performance
+because of reading and writing the Stream everytime.
+
+
+Best Practice:
+	Store the file or image in the hard disk or any other storage block 
+	Store the filename with path in the database 
+
+Query:
+
+create table datatable(  id int , name varchar(100), data longblob);
+
+	
 
 
 
