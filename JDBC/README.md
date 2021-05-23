@@ -335,8 +335,7 @@ etc
 * pointer can be moved multiple times
 * pointer can be moved in random order 
 
-by default Resultset are not scrollable 
-you can explicitely specify the result set as scrollable 
+by default Resultset are not scrollable, You can explicitely specify the result set as scrollable 
 
 Statement stmt = con.createStatement(ResultSet.TYPE_SCROLL_SENSITIVE,...);
 
@@ -352,11 +351,10 @@ public boolean absolute(int)
 public boolean relative(int)
 public boolean previous()
 
-
 # Assignment :
 
-create table bookstore(bookid int primary key, bookname varchar(20), author varchar(20) , publication varchar(20),cost double, edition int);
-create table user_table(username varchar(20) unique, password varchar(20));
+create table bookstore( bookid int primary key, bookname varchar(20), author varchar(20) , publication varchar(20) , cost double , edition int );
+create table user_table( username varchar (20) unique , password varchar (20) );
 
 only 3 retry 
 Login 
@@ -376,11 +374,11 @@ options
 9. Exit 
 
 Hints : 
-Book pojo
-BookService (methods)
-JDBC API (method related to jdbc )
-UserValidation
-BookResource 
+		Book pojo
+		BookService (methods)
+		JDBC API (method related to jdbc )
+		UserValidation
+		BookResource 
 
 ## Transaction
 
@@ -494,12 +492,13 @@ because of reading and writing the Stream everytime.
 
 
 Best Practice:
+	
 	Store the file or image in the hard disk or any other storage block 
 	Store the filename with path in the database 
 
 Query:
 
-create table datatable(  id int , name varchar(100), data longblob);
+	create table datatable(  id int , name varchar(100), data longblob);
 
 	
 
