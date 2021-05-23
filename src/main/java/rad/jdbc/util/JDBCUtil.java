@@ -24,19 +24,18 @@ public class JDBCUtil {
 			e.printStackTrace();
 		}
 	}
-	
-	
+	/* Provides all data in the database table */
+
 	public static void getRecordsFromResultSet(ResultSet rs) throws SQLException {
-		if(rs.next()) {
+		if (rs.next()) {
 			do {
 				int studid = rs.getInt(1);
 				String studname = rs.getString(2);
-				String mail =rs.getString(3);
-				long phone=rs.getLong(4);
-				System.out.println(studid+"\t"+studname+"\t"+mail+"\t"+phone);
-			}while(rs.next());
-		}
-		else {
+				String mail = rs.getString(3);
+				long phone = rs.getLong(4);
+				System.out.println(studid + "\t" + studname + "\t" + mail + "\t" + phone);
+			} while (rs.next());
+		} else {
 			System.out.println("sorry , student record not found");
 		}
 	}
